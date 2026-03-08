@@ -1,0 +1,16 @@
+# Azure Developer CLI configuration
+name: platform-engineer-agent
+metadata:
+  template: platform-engineer-agent@0.1.0
+
+services:
+  agent:
+    project: .
+    language: ts
+    host: containerapp
+    docker:
+      path: Dockerfile
+
+infra:
+  provider: bicep
+  path: infra

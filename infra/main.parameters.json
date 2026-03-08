@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "githubAppId": {
+      "value": "${GITHUB_APP_ID}"
+    },
+    "githubAppPrivateKey": {
+      "value": "${GITHUB_APP_PRIVATE_KEY}"
+    },
+    "githubWebhookSecret": {
+      "value": "${GITHUB_WEBHOOK_SECRET}"
+    },
+    "azureTenantId": {
+      "value": "${AZURE_TENANT_ID}"
+    },
+    "azureClientId": {
+      "value": "${AZURE_CLIENT_ID}"
+    },
+    "azureClientSecret": {
+      "value": "${AZURE_CLIENT_SECRET}"
+    },
+    "agentBaseUrl": {
+      "value": "${AGENT_BASE_URL}"
+    }
+  }
+}

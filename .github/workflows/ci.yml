@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install server dependencies
+        run: npm ci
+
+      - name: Install dashboard dependencies
+        run: npm ci
+        working-directory: web
+
+      - name: Typecheck server
+        run: npx tsc --noEmit
+
+      - name: Typecheck dashboard
+        run: npx tsc --noEmit
+        working-directory: web
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build server
+        run: npm run build
+
+      - name: Build dashboard
+        run: npm run build
+        working-directory: web
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t platform-engineer-agent:${{ github.sha }} .
