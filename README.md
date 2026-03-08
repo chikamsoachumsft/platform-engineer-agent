@@ -121,7 +121,7 @@ Install GitHub App → @platform-engineer in chat → Agent analyzes repo
 ### Install & Run Locally
 
 ```bash
-git clone https://github.com/canayorachu/platform-engineer-agent.git
+git clone https://github.com/chikamsoachumsft/platform-engineer-agent.git
 cd platform-engineer-agent
 
 # Install dependencies
